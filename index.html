@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Interface</title>
+
+    <script>
+
+        function getNumberOfCoordinates(){
+
+            var amountOfCoordinates = document.getElementById('amountOfCoordinates').value; // get amount of coordinates that the user will send
+            var coordinatesDiv = document.getElementById("coordinatesDiv"); //
+            coordinatesDiv.innerHTML = "<br>";
+
+            var newDiv = document.createElement('div');
+            var coordinatesInput = document.createElement('input');
+            var breakElement = document.createElement('br');
+            coordinatesInput.setAttribute('placeholder', '(x,y)');
+            var coordinateLabel = document.createElement('p');
+            coordinateLabel.innerHTML = "Coordinate: ";
+
+            newDiv.appendChild(coordinateLabel);
+            newDiv.appendChild(coordinatesInput);
+            newDiv.appendChild(breakElement);
+
+            for(var i = 1; i <= amountOfCoordinates; i++){
+
+                coordinatesDiv.innerHTML += newDiv.innerHTML;
+
+            }
+
+        }
+
+    </script>
+
+</head>
+<body bgcolor = "red">
+
+    <form>
+        <label>How many coordinates?</label>
+        <input id = "amountOfCoordinates">
+        <button onclick = "getNumberOfCoordinates(); return false;">Go</button>
+        <div id = "coordinatesDiv"></div>
+        <br>
+    </form>
+
+</body>
+</html>

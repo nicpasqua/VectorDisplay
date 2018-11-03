@@ -8,9 +8,9 @@
 
         function getNumberOfShapes(){
 
-            var amountOfShapes = document.getElementById('amountOfShapes').value; // get amount of coordinates that the user will send
-            var shapesDiv = document.getElementById("shapesDiv"); //
-            shapesDiv.innerHTML = "<br>";
+            var amountOfCoordinates = document.getElementById('amountOfCoordinates').value; // get amount of coordinates that the user will send
+            var coordinatesDiv = document.getElementById("coordinatesDiv"); //
+            coordinatesDiv.innerHTML = "<br>";
 
             var newDiv = document.createElement('div');
             var coordinatesInput = document.createElement('input');
@@ -24,19 +24,13 @@
             newDiv.appendChild(coordinatesInput);
             newDiv.appendChild(breakElement);
 
-            for(var i = 1; i <= amountOfShapes; i++) {
 
-                shapesDiv.innerHTML += "<b>Shape:</b>"
 
-                for (var j = 1; j <= 4; j++) {
+            for (var j = 1; j <= amountOfCoordinates; j++) {
 
-                    shapesDiv.innerHTML += newDiv.innerHTML;
+                coordinatesDiv.innerHTML += newDiv.innerHTML;
 
-                } // end of inner loop
-
-                shapesDiv.innerHTML += "<br>";
-
-            } // end of outer loop
+            } // end of inner loop
 
         }
 
@@ -47,9 +41,9 @@
 
     <form>
         <label>How many coordinates?</label>
-        <input id = "amountOfShapes">
+        <input id = "amountOfCoordinates">
         <button onclick = "getNumberOfShapes(); return false;">Go</button>
-        <div id = "shapesDiv"></div>
+        <div id = "coordinatesDiv"></div>
         <br>
     </form>
 

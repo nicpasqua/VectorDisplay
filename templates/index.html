@@ -6,28 +6,37 @@
 
     <script>
 
-        function getNumberOfCoordinates(){
+        function getNumberOfShapes(){
 
-            var amountOfCoordinates = document.getElementById('amountOfCoordinates').value; // get amount of coordinates that the user will send
-            var coordinatesDiv = document.getElementById("coordinatesDiv"); //
-            coordinatesDiv.innerHTML = "<br>";
+            var amountOfShapes = document.getElementById('amountOfShapes').value; // get amount of coordinates that the user will send
+            var shapesDiv = document.getElementById("shapesDiv"); //
+            shapesDiv.innerHTML = "<br>";
 
             var newDiv = document.createElement('div');
             var coordinatesInput = document.createElement('input');
             var breakElement = document.createElement('br');
-            coordinatesInput.setAttribute('placeholder', '(x,y)');
-            var coordinateLabel = document.createElement('p');
-            coordinateLabel.innerHTML = "Coordinate: ";
 
-            newDiv.appendChild(coordinateLabel);
+            coordinatesInput.setAttribute('placeholder', '(x,y)');
+            var coordinatesLabel = document.createElement('p');
+            coordinatesLabel.innerHTML = "Coordinate: ";
+
+            newDiv.appendChild(coordinatesLabel);
             newDiv.appendChild(coordinatesInput);
             newDiv.appendChild(breakElement);
 
-            for(var i = 1; i <= amountOfCoordinates; i++){
+            for(var i = 1; i <= amountOfShapes; i++) {
 
-                coordinatesDiv.innerHTML += newDiv.innerHTML;
+                shapesDiv.innerHTML += "<b>Shape:</b>"
 
-            }
+                for (var j = 1; j <= 4; j++) {
+
+                    shapesDiv.innerHTML += newDiv.innerHTML;
+
+                } // end of inner loop
+
+                shapesDiv.innerHTML += "<br>";
+
+            } // end of outer loop
 
         }
 
@@ -38,9 +47,9 @@
 
     <form>
         <label>How many coordinates?</label>
-        <input id = "amountOfCoordinates">
-        <button onclick = "getNumberOfCoordinates(); return false;">Go</button>
-        <div id = "coordinatesDiv"></div>
+        <input id = "amountOfShapes">
+        <button onclick = "getNumberOfShapes(); return false;">Go</button>
+        <div id = "shapesDiv"></div>
         <br>
     </form>
 

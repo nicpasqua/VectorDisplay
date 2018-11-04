@@ -1,14 +1,11 @@
 from flask import Flask, render_template, flash, request, url_for, redirect
-
+from time import sleep
 from PIL import Image
 from smbus import SMBus
-import time
 
+addr =0x69
+bus = SMBus(1)
 
-slave_address = 0x69
-def __init__(self,address = 69, bus = default_bus):
-    self.file_read = io.open("/dev/i2c-"+str(bus),"rb",buffering=0)
-    self.file_write = io.open("/dev/i2c-"+str(bus),"wb",buffering = 0)
 
 app= Flask(__name__)
 
@@ -26,17 +23,22 @@ def handle_data():
         sendToKurt.append(1)
         alsoSend = []
         alsoSend.append(len(data))
-        for key in data.keys():
+	bus.write_byte(addr,len(data))
+	for key in data.keys():
             for val in data.getlist('in'+str(i)):
                 i+=1
                 value = val[1:-1]
                 x_raw, y_raw = value.split(",")
                 X_int = int(x_raw)
                 Y_int = int(y_raw)
+		pnts = []
+		pnts.append(X_int)
+		pnts.append(Y_int)
+		bus.write_i2c_block_data(addr,0,pnts)
                 alsoSend.append((X_int,Y_int))
+		sleep(0.05)
         sendToKurt.append(alsoSend)
-        print (sendToKurt) 
-        bus.write_block_data(slave_address,69,sendToKurt)
+	print (alsoSend) 
     return redirect(url_for('render'))
 
 

@@ -17,6 +17,7 @@
             var breakElement = document.createElement('br');
 
             coordinatesInput.setAttribute('placeholder', '(x,y)');
+						coordinatesInput.setAttribute('type','text');
             var coordinatesLabel = document.createElement('p');
             coordinatesLabel.innerHTML = "Coordinate: ";
 
@@ -24,11 +25,14 @@
             newDiv.appendChild(coordinatesInput);
             newDiv.appendChild(breakElement);
 
-
+						var num=1;
 
             for (var j = 1; j <= amountOfCoordinates; j++) {
-
+							
+								coordinatesInput.setAttribute('id','in'+num);
+								coordinatesInput.setAttribute('name','in'+num);
                 coordinatesDiv.innerHTML += newDiv.innerHTML;
+								num++;
 
             } // end of inner loop
 
@@ -37,14 +41,14 @@
     </script>
 
 </head>
-<body bgcolor = "red">
-
-    <form>
-        <label>How many coordinates?</label>
-        <input id = "amountOfCoordinates">
-        <button onclick = "getNumberOfShapes(); return false;">Go</button>
+<body style="background-color: grey">
+		<label>How Many Points?</label>
+		<input id= "amountOfCoordinates">
+		<button onclick = "getNumberOfShapes(); return false;">Go</button>
+		<form action="/handle_data" method="POST">
         <div id = "coordinatesDiv"></div>
         <br>
+				<input id="butt" type="submit" value="Submit">				
     </form>
 
 </body>

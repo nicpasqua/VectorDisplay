@@ -1,13 +1,16 @@
 from flask import Flask, render_template, flash, request, url_for, redirect
 
 from PIL import Image
-import smbus
+from smbus import SMBus
 import time
 
-bus = smbus.SMBus(0)
-slave_address = 0x69
 
-app = Flask(__name__)
+slave_address = 0x69
+def __init__(self,address = 69, bus = default_bus):
+    self.file_read = io.open("/dev/i2c-"+str(bus),"rb",buffering=0)
+    self.file_write = io.open("/dev/i2c-"+str(bus),"wb",buffering = 0)
+
+app= Flask(__name__)
 
 @app.route('/')
 def render():
